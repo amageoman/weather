@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="./index.css">
+
+
+
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Bungee+Inline&family=Lobster&family=Monoton&family=Patrick+Hand&family=Poppins:wght@300&family=Silkscreen&display=swap');
+    </style>
+
+  <!-- CSS only -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+
+  <!-- JavaScript Bundle with Popper -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
+    crossorigin="anonymous"></script>
+  <script src="https://kit.fontawesome.com/432625685c.js" crossorigin="anonymous"></script>
+</head>
+
+<body>
+
+<img src="./images/clo.png" alt="" class="clo clo-1">
+<img src="./images/clo.png" alt="" class="clo clo-2">
+<img src="./images/clo.png" alt="" class="clo clo-3">
+
+
+  <div class="search">
+
+    <input class="form-control" type="text" placeholder="Search City" id="cityname">
+    <button onclick="search()" type="button"><i class="fa-sharp fa-solid fa-magnifying-glass fa-2x"></i></button>
+
+  </div>
+
+  <div class="wheather">
+
+    
+      <div class="city">
+        <img src="./images/clear.jpg" id="imag" alt="">
+        <div>
+        <span id="temp">
+          00.0 
+          
+        </span>
+        <h5 id="type">-----</h5>
+    </div>
+      <h2 id="city">-------
+
+      </h2>
+    </div>
+
+    <div class="details">
+
+      <!-- <div class="det det-"><h2>MAIN</h2><br><div id="main">------</div></div> -->
+      <div class="det det-"><h2>Humidity</h2><br><div id="humidity">------</div></div>
+      <div class="det det-"><h2>Wind speed</h2><br><div id="windspeed">------</div></div>
+      <div class="det det-"><h2>Sunrise</h2><br><div id="sunrise">------</div></div>
+      <div class="det det-"><h2>Sunset</h2><br><div id="sunset">------</div></div>
+    </div>
+  </div>
+</body>
+<script>
+
+
+function search(){
+
+  cityname=cityname.value;
+  fetch(`https://api.openweathermap.org/data/2.5/weather?q=${cityname}&appid=5b4bee0ba241d092159faf007e166080`).then(d=>d.json()).then(res=>displaydata(res))
+}
+
+
+function displaydata(tempdata){
+
+  cityname=tempdata.name;
+weathertype=tempdata.weather[0].main;
+rise=tempdata.sys.sunrise;
+set=tempdata.sys.sunset;
+humid=tempdata.main.humidity;
+wind=tempdata.wind.speed;
+fahr=(tempdata.main.temp)
+a=(fahr-32)*5;
+celcius=Math.floor(a/9);
+
+
+
+  city.innerHTML=`${cityname}`
+type.innerHTML=`${weathertype}`
+sunrise.innerHTML=`${rise}`
+sunset.innerHTML=`${set}`
+humidity.innerHTML=`${humid} g.m<sup>-3</sup>`
+windspeed.innerHTML=`${wind} Km/hr`
+
+
+temp.innerHTML=` ${celcius}<sup>0</sup>C `
+
+// if(weathertype=="clouds"){
+
+
+
+imag.src=`./images/${weathertype}.jpg`
+// }
+
+}
+
+</script>
+
+</html>
