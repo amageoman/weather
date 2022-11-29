@@ -27,9 +27,9 @@
 
 <body>
 
-<img src="./images/clo.png" alt="" class="clo clo-1">
-<img src="./images/clo.png" alt="" class="clo clo-2">
-<img src="./images/clo.png" alt="" class="clo clo-3">
+<img src="./images/clouds.png" alt="" id="animg"class="clo clo-1">
+<img src="./images/clouds.png" alt="" id="animg" class="clo clo-2">
+<img src="./images/clouds.png" alt="" id="animg" class="clo clo-3">
 
 
   <div class="search">
@@ -84,9 +84,9 @@ rise=tempdata.sys.sunrise;
 set=tempdata.sys.sunset;
 humid=tempdata.main.humidity;
 wind=tempdata.wind.speed;
-fahr=(tempdata.main.temp)
-a=(fahr-32)*5;
-celcius=Math.floor(a/9);
+kelvin=(tempdata.main.temp)
+
+celcius=Math.floor(kelvin-273.15);
 
 
 
@@ -98,13 +98,18 @@ humidity.innerHTML=`${humid} g.m<sup>-3</sup>`
 windspeed.innerHTML=`${wind} Km/hr`
 
 
-temp.innerHTML=` ${celcius}<sup>0</sup>C `
+temp.innerHTML=` ${celcius} <sup>0</sup>C `
 
 // if(weathertype=="clouds"){
 
 
 
 imag.src=`./images/${weathertype}.jpg`
+document.querySelector(".clo-1").src=`./images/${weathertype}.png`
+document.querySelector(".clo-2").src=`./images/${weathertype}.png`
+document.querySelector(".clo-3").src=`./images/${weathertype}.png`
+
+
 // }
 
 }

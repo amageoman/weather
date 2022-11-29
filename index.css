@@ -19,15 +19,18 @@ overflow: hidden;
 .clo{
 
     opacity: .4;
+    width:500px;
+    height:300px;
 }
 .clo-1{
-
+    left:-400px;
     position: absolute;
     z-index: -1;
     animation: cloudy 20s linear infinite;
 }
 
 .clo-2{
+    left:-500px;
 top:400px;
     position: absolute;
     z-index: -1;
@@ -35,7 +38,7 @@ top:400px;
 }
 .clo-3{
 
-    
+    left:-700px;
     top:200px;
     position: absolute;
     z-index: -1;
@@ -45,10 +48,10 @@ top:400px;
 @keyframes cloudy{
 
 50%{
-    transform: translateX(1500px);
+    transform: translateX(2000px);
 }
 100%{
-    transform: translateX(-1500px);
+    transform: translateX(-2000px);
 }
 }
 .search{
